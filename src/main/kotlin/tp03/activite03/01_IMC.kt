@@ -1,18 +1,13 @@
 package tp03.activite03
 
 fun main() {
-    // Récupère le poids saisi par l'utilisateur
-    println("Entre un poids en kg :")
-    val poids = readln().toDouble()
+    val poids = recuperePoidsEnKg()
+    val taille = recupereTailleEnM()
+    val imc = calculeIMC(poids, taille)
+    affichageMessagePourImc(imc)
+}
 
-    // Récupère la taille saisie de l'utilisateur
-    println("Entre une taille en m : ")
-    val taille = readln().toDouble()
-
-    // Calcule de l'IMC
-    val imc = poids / (taille * taille)
-
-    // Affichage du message adapté en fonction de la valeur de l'IMC
+fun affichageMessagePourImc(imc: Double) {
     println("L'IMC (Indice de masse corporelle) correspondant est de : $imc.")
     if (imc < 18.5) {
         println("Cet IMC correspond à une insuffisance pondérale.")
@@ -23,4 +18,18 @@ fun main() {
     } else {
         println("Cet IMC correspond à de l'obésité.")
     }
+}
+
+fun calculeIMC(poids: Double, taille: Double): Double {
+    return poids / (taille * taille)
+}
+
+fun recuperePoidsEnKg(): Double {
+    println("Entre un poids en kg :")
+    return readln().toDouble()
+}
+
+fun recupereTailleEnM(): Double {
+    println("Entre une taille en m : ")
+    return readln().toDouble()
 }
