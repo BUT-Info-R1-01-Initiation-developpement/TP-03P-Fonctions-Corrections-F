@@ -1,10 +1,15 @@
 package tp03.activite03
 
 fun main() {
+    // Récupère la distance parcourue
     println("Entrez la distance parcourue en km:")
     val distance = readln().toDouble()
+
+    // Récupère le nombre de voyageurs
     println("Entrez le nombre de voyageurs:")
     val nombreVoyageurs = readln().toInt()
+
+    // Récupère le mode de transport
     println(
         """
             Entrez le mode de transports :
@@ -30,6 +35,7 @@ fun main() {
         }
     } while (choixTransport != "1" && choixTransport != "2" && choixTransport != "3")
 
+    // calcule emission totale de CO2 par voyageur
     val emissionCO2enGParKmParVoyageur = if (choixTransport == "1") {
         120 / nombreVoyageurs
     } else if (choixTransport == "2") {
@@ -38,6 +44,8 @@ fun main() {
         285
     }
     val emissionsCO2TotaleParVoyageurEnKg = emissionCO2enGParKmParVoyageur * distance / 1000
+
+    // Affiche les informations sur les emissions pour ce voyage
     println("""
         Dans le cas de ce voyage de $distance km en $nomTransport, la quantité de CO2 émise 
         - par chaque voyageur est de $emissionsCO2TotaleParVoyageurEnKg kg.
